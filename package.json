@@ -1,0 +1,32 @@
+{
+  "name": "1001nuggets",
+  "version": "2.0.0",
+  "description": "1001 nuggets compatible with react 18 and all latest packages of july 2023",
+  "main": "backend/server.js",
+  "engines": {
+    "node": "18.16.1"
+  },
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "concurrently \"cd backend && npm run watch\" \"cd frontend && npm start\"",
+    "install": "cd backend && npm i && cd ../frontend && npm i",
+    "seed": "npm run rt && cd backend && npm run seed",
+    "seedQOTD": "cd backend && npm run seedQOTD",
+    "build": "cd frontend && npm run build",
+    "rt": "cd backend/mongo/seeders && node relatedTopicCode.js",
+    "qrIDa": "cd backend/mongo/seeders/testing && node quoteRealIDAdder.js"
+  },
+  "author": "Tom Siopes",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "concurrently": "^8.2.0"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.0",
+    "dotenv": "^16.3.2",
+    "graphql": "^16.7.1",
+    "react-bootstrap": "^2.8.0",
+    "react-icons": "^4.12.0"
+  }
+}
