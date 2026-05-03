@@ -24,14 +24,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("public"));
 
-app.use(cors({
-    origin: [
-        "http://localhost:3000", //web
-        "capacitor://localhost", //IOS cap
-        "http://localhost", //Android cap
-    ],
-    credentials: true
-}));
+app.use(cors());
 
 async function middleWare() {
     await server.start();
@@ -39,14 +32,6 @@ async function middleWare() {
 }
 
 middleWare();
-
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static(path.join(__dirname, "../frontend/build")));
-
-    app.get("*", (request, response) => {
-        response.sendFile(path.join(__dirname, "../frontend/build/index.html"));
-    });
-}
 
 db.once("open", () => {
     app.listen(PORT, ()=> {
